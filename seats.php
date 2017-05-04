@@ -63,7 +63,7 @@
 							var fieldHTML = '<tr >'+
                                 '<td><div class="othercolumns rowsnames text-uppercase">'+alphabets[x]+'</div></td>'+
                                 '<?php for($i=1;$i<=30;$i++){ ?> '+
-                                '<td ><div class="seatnumbers"><?=$i?></div></td>'+
+                                '<td ><div class="seatnumbers" data-name="'+x+'_'+<?=$i?>+'"><?=$i?></div></td>'+
                                 ' <?php } ?>'+
                                 '<td><div class="othercolumns rowsdel">-</div></td>'+
                               '</tr>';

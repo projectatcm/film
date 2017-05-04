@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2017 at 04:58 AM
+-- Generation Time: May 04, 2017 at 10:16 AM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -68,7 +68,14 @@ CREATE TABLE IF NOT EXISTS `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `category`) VALUES
+(2, 'action');
 
 -- --------------------------------------------------------
 
@@ -80,7 +87,7 @@ DROP TABLE IF EXISTS `comments`;
 CREATE TABLE IF NOT EXISTS `comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` int(11) NOT NULL,
-  `type` varchar(25) NOT NULL,
+  `type` text NOT NULL,
   `comment` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -100,6 +107,21 @@ CREATE TABLE IF NOT EXISTS `cot` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cotseats`
+--
+
+DROP TABLE IF EXISTS `cotseats`;
+CREATE TABLE IF NOT EXISTS `cotseats` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `theaterid` int(11) NOT NULL,
+  `screenid` int(11) NOT NULL,
+  `seats` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `crew`
 --
 
@@ -110,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `crew` (
   `type` varchar(50) NOT NULL,
   `images` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `crew`
@@ -131,9 +153,7 @@ INSERT INTO `crew` (`id`, `name`, `type`, `images`) VALUES
 (16, 'Lal jose', 'directors', './images/crew/directors/58945ff9cf5aa5.72158966.png'),
 (17, 'Antony perumbavoor', 'producers', './images/crew/producers/5894604bb0cdb2.19032505.png'),
 (18, 'Ash iq abu', 'directors', './images/crew/directors/5894609257a207.10108692.png'),
-(20, 'Anjali', 'directors', './images/crew/directors/589461a45cac86.47939917.png'),
-(35, 'Maryam Dalton', 'actor', './images/crew/actor/58a42aa0768e89.91882782.jpg'),
-(36, 'Ursula Baker', 'producers', './images/crew/producers/58a42ac409a178.73537102.jpg');
+(20, 'Anjali', 'directors', './images/crew/directors/589461a45cac86.47939917.png');
 
 -- --------------------------------------------------------
 
@@ -144,7 +164,7 @@ INSERT INTO `crew` (`id`, `name`, `type`, `images`) VALUES
 DROP TABLE IF EXISTS `films`;
 CREATE TABLE IF NOT EXISTS `films` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
+  `name` text NOT NULL,
   `language` text NOT NULL,
   `cast` text NOT NULL,
   `director` text NOT NULL,
@@ -159,8 +179,8 @@ CREATE TABLE IF NOT EXISTS `films` (
 --
 
 INSERT INTO `films` (`id`, `name`, `language`, `cast`, `director`, `producer`, `poster`, `releasedate`) VALUES
-(1, 'Dahlia Casey', '2,4,5,6,7', '4,5,7,8,10,12,13,14,15', '20', '17', './images/films/58a409a45cace4.32147897.png', '05-04-1970'),
-(2, 'Whoopi Elliott', '3,4,6,7', '4,7,9,14', '18', '36', './images/films/58a42cb565f453.64946021.jpg', '23-02-1987');
+(1, 'theri', '5,7', '4,5,7,9,12,13,14,15', '18', '17', './images/films/58db4b494db4f9.33648945.jpg', '22-04-2017'),
+(2, 'oru mexican aparatha', '2', '37', '16', '17', './images/films/58db4d09461537.12848404.jpg', '29-03-2017');
 
 -- --------------------------------------------------------
 
@@ -173,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `languages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `language` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `languages`
@@ -239,11 +259,21 @@ CREATE TABLE IF NOT EXISTS `ratings` (
 DROP TABLE IF EXISTS `seats`;
 CREATE TABLE IF NOT EXISTS `seats` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `gold` text NOT NULL,
-  `silver` text NOT NULL,
-  `bronze` text NOT NULL,
+  `theaterid` int(11) NOT NULL,
+  `screenno` int(11) NOT NULL,
+  `rows` int(11) NOT NULL,
+  `cols` int(11) NOT NULL,
+  `seats` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `seats`
+--
+
+INSERT INTO `seats` (`id`, `theaterid`, `screenno`, `rows`, `cols`, `seats`) VALUES
+(2, 22, 1, 2, 2, '20,20,10,10'),
+(3, 23, 1, 5, 2, '35,73,70,32,94,13,32,20,16,20');
 
 -- --------------------------------------------------------
 
@@ -256,9 +286,48 @@ CREATE TABLE IF NOT EXISTS `show_times` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `theater_id` int(11) NOT NULL,
   `screen_no` int(11) NOT NULL,
-  `show_times` text NOT NULL,
+  `firstshowtime` varchar(255) DEFAULT 'no show',
+  `noonshowtime` varchar(255) DEFAULT 'no show',
+  `matineeshowtime` varchar(255) DEFAULT 'no show',
+  `secondshowtime` varchar(255) NOT NULL DEFAULT 'no show',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `show_times`
+--
+
+INSERT INTO `show_times` (`id`, `theater_id`, `screen_no`, `firstshowtime`, `noonshowtime`, `matineeshowtime`, `secondshowtime`) VALUES
+(1, 22, 1, '4:22 AM', '2:11 pm', '9:52 PM', '8:31 PM'),
+(2, 22, 2, '1:2 AM', '1:1 am', 'no show', '1:1 PM'),
+(4, 23, 1, '10:16 AM', 'no show', '4:55 PM', '8:14 PM');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `theaterfilms`
+--
+
+DROP TABLE IF EXISTS `theaterfilms`;
+CREATE TABLE IF NOT EXISTS `theaterfilms` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `theaterid` int(11) NOT NULL,
+  `screenid` int(11) NOT NULL,
+  `showtime` text NOT NULL,
+  `filmid` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `theaterfilms`
+--
+
+INSERT INTO `theaterfilms` (`id`, `theaterid`, `screenid`, `showtime`, `filmid`) VALUES
+(4, 22, 1, 'noonshow', 2),
+(5, 22, 1, 'firstshow', 2),
+(9, 22, 1, 'matineeshow', 2),
+(8, 22, 1, 'secondshow', 2),
+(10, 23, 1, 'firstshow', 2);
 
 -- --------------------------------------------------------
 
@@ -284,20 +353,32 @@ CREATE TABLE IF NOT EXISTS `theaters` (
   `buildingimage` text NOT NULL,
   `no_of_screens` int(11) NOT NULL,
   `status` text NOT NULL,
+  `mailverification` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `theaters`
 --
 
-INSERT INTO `theaters` (`id`, `name`, `email`, `password`, `contact`, `address`, `location`, `city`, `state`, `country`, `latitude`, `longitude`, `proof`, `buildingimage`, `no_of_screens`, `status`) VALUES
-(14, 'Gillian Gill', 'a@f.c', NULL, '720', 'Aperiam libero veritatis odio et in exercitationem autem possimus quibusdam sed rem dolor exercitation aut eum molestias nihil rem , Pariatur Ut cumque unde rerum nostrud enim aut sunt sed quia rerum', 'Assam, India', 'Assam', 'Assam', ' India', '26.2006043', '92.93757389999996', './images/theaters/proofs/58a42cd2094ce8.33792978.jpg', './images/theaters/theaterimage/58a42cd2098a59.39132170.jpg', 6, 'blocked'),
-(10, 'Buffy Duncan', 'neduzy@gmail.com', '3f81f5', '651', 'Occaecat dolore do qui eum voluptatibus voluptatem , Ipsum architecto et ut aliquip', 'Andhra Pradesh, India', 'Andhra Pradesh', 'Andhra Pradesh', ' India', '15.9128998', '79.73998749999998', './images/theaters/proofs/589c69cfccad20.69051352.png', './images/theaters/theaterimage/589c69cfccdc22.94229998.png', 6, 'pending'),
-(11, 'Zia Young', 'wekyvuh@hotmail.com', '6b8732', '800', 'Impedit qui enim tenetur ea odit duis eum maxime expedita molestiae voluptate mollit consequat Hic incididunt reprehenderit in porro , Ut dolor occaecat ut ex omnis cupiditate et veniam similique commodo eligendi qui itaque amet mollitia facilis doloremque', 'Andheri East, Mumbai, Maharashtra, India', ' Mumbai', ' Maharashtra', ' India', '19.1154908', '72.87269519999995', './images/theaters/proofs/589c6afdb8ee24.04449605.png', './images/theaters/theaterimage/589c6afdb91800.55307028.jpg', 1, 'blocked'),
-(15, 'Brent Santana', 'diravub@yahoo.com', '', '704', 'Qui quo dolorum illo unde dolorem veniam dicta irure deserunt eius pariatur Rem , Ex exercitationem ipsum delectus est id qui culpa commodo qui qui iusto fugiat aut', 'Dombivli, Maharashtra, India', 'Dombivli', ' Maharashtra', ' India', '19.2094006', '73.09394829999997', './images/theaters/proofs/58a5a9a906df91.27505229.png', './images/theaters/theaterimage/58a5a9a9070228.89012451.png', 6, 'approved'),
-(16, 'Ulysses Blevins', 'kuriwaruq@yahoo.com', 'kuriwaruq@yahoo.com', '968', 'Autem do autem ea quaerat voluptas quia porro , A esse amet at velit culpa illo qui commodi nostrum est inventore consequuntur quis facilis sit quo sit dignissimos', 'Assam, India', 'Assam', 'Assam', ' India', '26.2006043', '92.93757389999996', './images/theaters/proofs/58a5aa1715d617.50473936.jpg', './images/theaters/theaterimage/58a5aa1715f8d1.29035300.png', 2, 'approved'),
-(17, 'Samson Curtis', 'xosipexeg@hotmail.com', 'xosipexeg@hotmail.com', '336', 'Nam iure ea ut at , Iure voluptatem eos necessitatibus tempore ex sit', 'Andheri East, Mumbai, Maharashtra, India', ' Mumbai', ' Maharashtra', ' India', '19.1154908', '72.87269519999995', './images/theaters/proofs/58a5aabd206a86.38841614.jpg', './images/theaters/theaterimage/58a5aabd208d33.54662009.jpg', 1, '2794b4');
+INSERT INTO `theaters` (`id`, `name`, `email`, `password`, `contact`, `address`, `location`, `city`, `state`, `country`, `latitude`, `longitude`, `proof`, `buildingimage`, `no_of_screens`, `status`, `mailverification`) VALUES
+(23, 'ashoka', 'ashokatheater@gmail.com', '555', '0480 280 2543', ' National Highway 17, Kodungallur, Kerala 680664 ,  National Highway 17, Kodungallur, Kerala 680664', 'Kodungallur, Kerala, India', 'Kodungallur', ' Kerala', ' India', '10.2244299', '76.19777369999997', './images/theaters/proofs/58db49a321cad5.60904026.png', './images/theaters/theaterimage/58db49a321f373.80917996.png', 1, 'approved', 'verified'),
+(24, 'ashoka', 'ashokatheater123@gmail.com', '6a6be7', '0480 280 2543', ' National Highway 17, Kodungallur, Kerala 680664 ,  National Highway 17, Kodungallur, Kerala 680664', 'Kodungallur, Kerala, India', 'Kodungallur', ' Kerala', ' India', '10.2244299', '76.19777369999997', './images/theaters/proofs/58db49c62285c2.60632733.png', './images/theaters/theaterimage/58db49c622abd7.32564246.png', 1, 'approved', 'not verified'),
+(25, 'D Cinemaas', 'dcinems@gmail.com', '98eb21', '0480 320 1111', 'South Junction, Chalakudy, Kerala 680307 , South Junction, Chalakudy, Kerala 680307', 'South Junction, Chalakudy, Kerala 680307, India', ' Chalakudy', ' Kerala 680307', ' India', '10.3006127', '76.33748289999994', './images/theaters/proofs/58db4aa8424454.40402513.jpg', './images/theaters/theaterimage/58db4aa8426a67.19736568.jpg', 4, 'approved', 'not verified');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `theaterseats`
+--
+
+DROP TABLE IF EXISTS `theaterseats`;
+CREATE TABLE IF NOT EXISTS `theaterseats` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `theaterid` int(11) NOT NULL,
+  `seats` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -314,16 +395,21 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` text NOT NULL,
   `profileimage` text,
   `status` text NOT NULL,
+  `mailverification` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `phone`, `email`, `password`, `profileimage`, `status`) VALUES
-(2, 'Courtney Dotson', '+448-70-5432623', 'jeybin@gmail.com', '123456', NULL, 'verified'),
-(3, 'Fleur Watson', '+856-71-5785947', 'muwaru@gmail.com', 'Pa$$w0rd!', NULL, 'f7fd9c');
+INSERT INTO `users` (`id`, `name`, `phone`, `email`, `password`, `profileimage`, `status`, `mailverification`) VALUES
+(2, 'Courtney Dotson', '+448-70-5432623', 'jeybin@gmail.com', '000', NULL, 'approved', 'verified'),
+(3, 'Fleur Watson', '+856-71-5785947', 'muwaru@gmail.com', 'Pa$$w0rd!', NULL, 'f7fd9c', ''),
+(4, 'Demetria Howell', '+279-27-6604734', 'kotalup@hotmail.com', '2603ae', NULL, 'pending', 'not verified'),
+(5, 'Upton Kemp', '+455-69-2251816', 'qyxapa@gmail.com', 'fe348f', NULL, 'pending', 'not verified'),
+(6, 'Axel Kelley', '+398-40-7983035', 'lyfihafy@yahoo.com', 'fd0609', NULL, 'pending', 'not verified'),
+(7, 'Karly Dennis', '+844-97-7780720', 'hytuke@hotmail.com', '6ffde6', NULL, 'pending', 'not verified');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
