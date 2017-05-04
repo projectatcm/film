@@ -7,13 +7,13 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title></title>
 
-		<script src="js/vendors/js/jquery-1.12.4.js" charset="utf-8"></script>
-		<script src="js/vendors/js/bootstrap.min.js" charset="utf-8"></script>
+		<script src="js/vendors/jquery-1.12.4.js" charset="utf-8"></script>
+		<script src="js/vendors/bootstrap.min.js" charset="utf-8"></script>
 		<script src="./js/seat.js" charset="utf-8"></script>
 		<!-- css -->
-		<link rel="stylesheet" href="css/vendors/css/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="css/vendors/css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/vendors/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/vendors/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="css/vendors/bootstrap.min.css">
+		<link rel="stylesheet" href="css/vendors/font-awesome.min.css">
 		<link rel="stylesheet" href="./css/seat.css">
   </head>
   <body style="background-color:#f3f3f3">
@@ -60,7 +60,14 @@
 			var alphabets = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','z'];
 			$(addButton).click(function(){
 					if(x < maxField){
-							var fieldHTML = '<tr ><td><div class="othercolumns rowsnames text-uppercase">'+alphabets[x]+'</div></td><?php for($i=1;$i<=30;$i++){ ?> <td ><div class="seatnumbers"><?=$i?></div></td> <?php } ?><td><div class="othercolumns rowsdel">-</div></td></tr>';
+							var fieldHTML = '<tr >'+
+                                '<td><div class="othercolumns rowsnames text-uppercase">'+alphabets[x]+'</div></td>'+
+                                '<?php for($i=1;$i<=30;$i++){ ?> '+
+                                '<td ><div class="seatnumbers"><?=$i?></div></td>'+
+                                ' <?php } ?>'+
+                                '<td><div class="othercolumns rowsdel">-</div></td>'+
+                              '</tr>';
+
 							$(wrapper).append(fieldHTML);
 							x++;
 					}
