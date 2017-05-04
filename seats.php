@@ -7,13 +7,13 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title></title>
 
-		<script src="./vendors/js/jquery-1.12.4.js" charset="utf-8"></script>
-		<script src="./vendors/js/bootstrap.min.js" charset="utf-8"></script>
+		<script src="js/vendors/js/jquery-1.12.4.js" charset="utf-8"></script>
+		<script src="js/vendors/js/bootstrap.min.js" charset="utf-8"></script>
 		<script src="./js/seat.js" charset="utf-8"></script>
 		<!-- css -->
-		<link rel="stylesheet" href="./vendors/css/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="./vendors/css/bootstrap.min.css">
-		<link rel="stylesheet" href="./vendors/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/vendors/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="css/vendors/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/vendors/css/font-awesome.min.css">
 		<link rel="stylesheet" href="./css/seat.css">
   </head>
   <body style="background-color:#f3f3f3">
