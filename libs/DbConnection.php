@@ -30,4 +30,16 @@ class DbConnection {
     }
 
 
+    public function setDataAndReturnLastInsertId($query) {
+        $result = mysqli_query($this->connection, $query) or die(mysqli_error());
+        $lastinsertid = mysqli_insert_id($this->connection);
+        if ($result){
+            return array('1',$lastinsertid);
+          }
+        else{
+            return false;
+        }
+    }
+
+
 }

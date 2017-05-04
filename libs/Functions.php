@@ -5,6 +5,41 @@ require_once ('DbConnection.php');
 class Functions extends DbConnection {
 
 
+public function assignseatfortheater($fieldid,$datas){
+  $query  = "UPDATE theaterseats SET seats = '$datas' WHERE id = '$fieldid'" ;
+	$output = $this->setData($query);
+	return $output;
+}
+
+
+
+public function find($key,$string){
+		//$string = "1~2~3~";
+		$split_array = explode("~", $string);
+		$array_key = array_search($key, $split_array);
+		if($array_key){
+			echo "found";
+			unset($split_array[$array_key]);
+			$split_array = array_filter($split_array);
+    	$string = implode("~", $split_array);
+      print_r($string);
+      exit();
+      return $string;
+		}
+    else{	return FALSE; }
+	}
+
+
+
+public function checktheaterintheaterseatstable($theaterid){
+  $query = "SELECT * FROM theaterseats WHERE theaterid='$theaterid'";
+  return $this->getData($query);
+}
+public function addtheatertotheaterseattable($theaterid){
+  $query = "INSERT INTO theaterseats SET theaterid='$theaterid'";
+  return $this->setDataAndReturnLastInsertId($query);
+}
+
 public function getShowTimesByTheaterAndScreenId($theater,$screenid){
   $query = "SELECT * FROM show_times WHERE theater_id='$theater' AND screen_no='$screenid'";
   return $this->getData($query);

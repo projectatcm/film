@@ -1,0 +1,17 @@
+td{ padding:2px; }
+.seatnumbers{
+	padding:5px 10px;
+	color:#ECEFF1;
+	width:35px;
+	border-radius:4px;
+	cursor: pointer;
+}
+.greendiv{ background-color:#00C853; }
+.reddiv{ background-color:#f55; }
+.othercolumns{
+	color:#ECEFF1;
+	padding:5px 10px;
+}
+.rowsnames{background-color:#C51162; }
+.rowsadd{background-color:#795548;cursor: pointer; }
+.rowsdel{background-color:#F44336;cursor: pointer; }
