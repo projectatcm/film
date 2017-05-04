@@ -1,0 +1,205 @@
+@import './location.css';
+img{
+	object-fit:cover;
+	height:100%;
+	width:100%;
+}
+.dashboardtiles {
+	padding: 15px;
+	background-color:#f55;
+}
+.dashboardtileicon{
+	opacity:0.25;font-size:70px;
+}
+.fa-trash {
+	cursor: pointer !important;
+}
+.fa-pencil {
+	cursor: pointer !important;
+}
+.fa-ban {
+	cursor: pointer !important;
+}
+.dashboardtexts {
+	opacity: 0.50
+}
+
+.dashboardtotalnumber {
+	font-size: 28px;
+	font-weight: 600;
+}
+.dashboardtilehead {
+	font-size: 14px;
+	font-weight: 100;
+	padding-top: 8px;
+}
+
+.dashboardtilemaincontainer {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.maincontainers {
+	padding: 50px;
+}
+.customfields {
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.fielddivs {
+	padding-bottom: 15px;
+}
+
+.cardcontainer {
+	padding-top: 15px;
+}
+
+.cards {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border: 1px solid #ccc;
+}
+.card-image-div {
+	height:120px;width:120px;background-color:#f7f7f7;margin-left:auto;margin-right:auto;border-radius:50%
+}
+
+.nopadding {
+	padding: 0 0 0 0 !important;
+}
+
+.imgfullsize{
+	height:270px !important;width:100%;
+	box-sizing: content-box;
+}
+
+
+.alltheatercardcontainer {
+	padding:6px;
+}
+
+.theaterimagecontainer {
+	height:270px;
+}
+
+.theaterdatacontainer{
+	background-color:#f7f7f7;padding-top:8px;
+	height:270px !important;
+}
+
+.theaterdatadiv {
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 21px;
+}
+
+.theaterdataheading {
+	font-weight: 700;
+}
+.theateroperationdiv {
+	background-color:#f7f7f7;padding-top:5px;padding-bottom:5px;font-size:16px;
+}
+
+.atagstyle {
+	color: #3598DB;
+}
+.atagstyle:hover{
+	color: #3D529E;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.fa-ban {
+	color: #FFA500;
+}
+
+.fa-pencil {
+	color: #236A98;
+}
+
+.fa-trash {
+	color: #f55;
+}
+
+.approvetheaterbtn {
+	color: #1D9D73;
+
+}
+ .theateroperations {
+	 padding-left: 10px;
+	 cursor: pointer;
+ }
+
+.notfoundtext{
+	opacity:0.3;font-weight: 700;font-size:24px;
+}
+
+ /*--------------------------------------------------modals-------------------------------------*/
+
+ /*<--------------confirmationmodals-------------------------->*/
+.confirmationmodals {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-radius: 0px;
+}
+
+.confirmationmodalstext {
+		font-weight: 700;
+		font-size: 18px;
+}
+
+.confirmationmodalsbuttoncontainer{
+	padding-top: 25px;
+}
+
+.modalblockbtn {
+	background-color: #FFA500;
+	color:#fafafa;
+	border-radius: 0px;
+	transition: all 0.50s ease-in-out;
+}
+.modalblockbtn:hover{
+	color:#fafafa;
+	border-radius: 5px;
+}
+.modalapprovebtn {
+	background-color: #1D9D73;
+	color:#fafafa;
+	border-radius: 0px;
+	transition: all 0.50s ease-in-out;
+}
+.modalapprovebtn:hover{
+	color:#fafafa;
+	border-radius: 5px;
+}
+.modaldeletebtn {
+	background-color: #f55;
+	color:#fafafa;
+	border-radius: 0px;
+	transition: all 0.50s ease-in-out;
+}
+.modaldeletebtn:hover{
+	color:#fafafa;
+	border-radius: 5px;
+}
+.modelupdatebtn {
+	background-color: #236A98;
+	color:#fafafa;
+	border-radius: 0px;
+	transition: all 0.50s ease-in-out;
+}
+.modelupdatebtn:hover{
+	color:#fafafa;
+	border-radius: 5px;
+}
+
+.modalcancelbtn{
+	border-radius: 0px;
+	transition: all 0.50s ease-in-out;
+	box-shadow: none;
+}
+.modalcancelbtn:hover{
+	border-radius: 5px;
+	background-color: transparent;
+}
+/*<--------------confirmationmodals-------------------------->*/
